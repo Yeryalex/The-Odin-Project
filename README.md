@@ -1,3 +1,1 @@
-# git_test
-
-HELLO ODIN
+# The Odin Project (TOP)
