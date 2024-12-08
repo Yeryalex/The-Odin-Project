@@ -1,12 +1,32 @@
 * {
-  font-family: "Times New Roman", Times, serif;
+  margin: 0;
+  box-sizing: border-box;
 }
 
+body {
+  background-color: #1e2b47;
+}
 h1 {
   text-align: center;
-  background-color: bisque;
+  background-color: rgb(242, 164, 68);
 }
 
 ul {
-  background-color: rgb(205, 163, 134);
+  text-align: center;
+  width: 700px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  margin: 20px auto;
+}
+
+li {
+  display: inline-block;
+  padding: 0px 15px;
+}
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
 }
