@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+}
+
+div {
+  height: 100px;
+  background-color: bisque;
+  border: 2px solid salmon;
+}
+
+.div1 {
+  flex-basis: 100px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background-color: aliceblue;
+}
+
+.div2 {
+  flex-basis: 100px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background-color: aliceblue;
+}
+.div3 {
+  flex-basis: 100px;
+  flex-grow: 1;
+  flex-shrink: 5;
+  background-color: aliceblue;
+}
