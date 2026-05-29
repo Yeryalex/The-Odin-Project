@@ -20,7 +20,11 @@ function addItem(e) {
     spanItem.textContent = itemToAdd;
     buttonDelete.textContent = "Delete"
     ulRef.appendChild(liItem);
+    inputRef.focus();
 }
+
+
+buttonRef.addEventListener("click", addItem);
 
 ulRef.addEventListener("click", (e) => {
 
@@ -29,5 +33,3 @@ ulRef.addEventListener("click", (e) => {
         removeLi.remove();
     }
 })
-
-buttonRef.addEventListener("click", addItem);
