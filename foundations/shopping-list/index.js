@@ -22,4 +22,12 @@ function addItem(e) {
     ulRef.appendChild(liItem);
 }
 
+ulRef.addEventListener("click", (e) => {
+
+    if (e.target.tagName == "BUTTON" && e.target.innerText == "Delete") {
+        let removeLi = e.target.closest("li");
+        removeLi.remove();
+    }
+})
+
 buttonRef.addEventListener("click", addItem);
