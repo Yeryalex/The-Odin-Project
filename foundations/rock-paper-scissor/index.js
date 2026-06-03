@@ -7,29 +7,40 @@ const computerPoints = document.createElement("div");
 const scoreContainer = document.createElement("div");
 const messageScore = document.createElement("div");
 const resetGame = document.createElement("button");
+const buttonsContainer = document.createElement("div");
 
 let humanScore = 0;
 let computerScore = 0;
 
 resetGame.innerText = "START OVER";
 rockButton.innerText = "ROCK";
+rockButton.className = "buttons"
 paperButton.innerText = "PAPER";
+paperButton.className = "buttons";
 scissorsButton.innerText = 'SCISSORS';
+scissorsButton.className = "buttons"
+resetGame.id = "reset";
+resetGame.classList.add("buttons");
 humanPoints.innerText = humanScore;
 computerPoints.innerText = computerScore;
 
+buttonsContainer.classList.add("buttons-container");
+scoreContainer.classList.add("score-container");
 scoreContainer.appendChild(humanPoints);
 scoreContainer.appendChild(computerPoints);
 
+containerDiv.classList.add("container-div");
 containerDiv.appendChild(scoreContainer);
-containerDiv.appendChild(rockButton);
-containerDiv.appendChild(paperButton);
-containerDiv.appendChild(scissorsButton);
+buttonsContainer.appendChild(rockButton);
+buttonsContainer.appendChild(paperButton);
+buttonsContainer.appendChild(scissorsButton);
+containerDiv.appendChild(buttonsContainer);
 
 document.body.appendChild(containerDiv);
+messageScore.classList.add("message-score");
 document.body.appendChild(messageScore);
 resetGame.classList.toggle("hidden");
-document.body.appendChild(resetGame);
+buttonsContainer.appendChild(resetGame);
 
 resetGame.addEventListener("click", () => {
     
@@ -44,7 +55,7 @@ resetGame.addEventListener("click", () => {
 
 containerDiv.addEventListener("click", (e) => {
 
-    if (e.target.tagName == "BUTTON"){
+    if (e.target.tagName == "BUTTON" && e.target.id !== "reset"){
         playRound(e, getComputerChoice());
     }
 });
