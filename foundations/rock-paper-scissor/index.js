@@ -5,10 +5,13 @@ const scissorsButton = document.createElement("button");
 const humanPoints = document.createElement("div");
 const computerPoints = document.createElement("div");
 const scoreContainer = document.createElement("div");
+const messageScore = document.createElement("div");
+const resetGame = document.createElement("button");
 
 let humanScore = 0;
 let computerScore = 0;
 
+resetGame.innerText = "START OVER";
 rockButton.innerText = "ROCK";
 paperButton.innerText = "PAPER";
 scissorsButton.innerText = 'SCISSORS';
@@ -20,25 +23,38 @@ scoreContainer.appendChild(computerPoints);
 
 containerDiv.appendChild(scoreContainer);
 containerDiv.appendChild(rockButton);
-containerDiv.appendChild(rockButton);
-containerDiv.appendChild(rockButton);
 containerDiv.appendChild(paperButton);
 containerDiv.appendChild(scissorsButton);
 
 document.body.appendChild(containerDiv);
+document.body.appendChild(messageScore);
+resetGame.classList.toggle("hidden");
+document.body.appendChild(resetGame);
 
-
+resetGame.addEventListener("click", () => {
+    
+    hideButtons();
+    resetGame.classList.toggle("hidden");
+    messageScore.innerText = "";
+    humanScore = 0;
+    computerScore = 0;
+    humanPoints.innerText = 0;
+    computerPoints.innerText = 0;
+});
 
 containerDiv.addEventListener("click", (e) => {
 
     if (e.target.tagName == "BUTTON"){
-
         playRound(e, getComputerChoice());
-        console.log(humanScore);
-        console.log(computerScore);
     }
 });
 
+function hideButtons() {
+
+    rockButton.classList.toggle("hidden");
+    paperButton.classList.toggle("hidden");
+    scissorsButton.classList.toggle("hidden");
+}
 
 function playRound(event, computerChoice) {
     
@@ -47,26 +63,30 @@ function playRound(event, computerChoice) {
 
     if (humanChoice == computerChoice) {
     
-        console.log("It is a tied! None of you deserve a point.");
+        
+        messageScore.innerText = "It is a tied! None of you deserve a point.";
         return ;
     }
     if (humanChoice == "ROCK" && computerChoice == "SCISSORS" 
         || humanChoice == "PAPER" && computerChoice == "ROCK"
         ||humanChoice == "SCISSORS" && computerChoice == "PAPER")
     {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-        humanPoints.innerText = humanScore++;
+        messageScore.innerText = `You win! ${humanChoice} beats ${computerChoice}`;
+        humanPoints.innerText = ++humanScore;
 
     } else {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        computerPoints.innerText = computerScore++;
+        messageScore.innerText = `You lose! ${computerChoice} beats ${humanChoice}`;
+        computerPoints.innerText = ++computerScore;
     }
     if (humanScore == 5) {
-        console.log("YOU WIN THE GAME!");
-        return ;
+        messageScore.innerText = `CONGRATULATIONS!!! YOU WIN THE GAME!`;
+        hideButtons();
+        resetGame.classList.toggle("hidden");
     }
     if (computerScore == 5) {
-        console.log("YOU LOSE THE GAME");
+        messageScore.innerText = `OOPS!!! YOU LOSE THE GAME!`;
+        hideButtons();
+        resetGame.classList.toggle("hidden");
     }
 
 }
