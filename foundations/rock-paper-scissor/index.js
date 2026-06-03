@@ -1,3 +1,17 @@
+const containerDiv = document.createElement("div");
+const rockButton = document.createElement("button");
+const paperButton = document.createElement("button");
+const scissorsButton = document.createElement("button");
+
+rockButton.innerText = "ROCK";
+paperButton.innerText = "PAPER";
+scissorsButton.innerText = 'SCISSORS';
+
+containerDiv.appendChild(rockButton);
+containerDiv.appendChild(paperButton);
+containerDiv.appendChild(scissorsButton);
+
+document.body.appendChild(containerDiv);
 
 playGame();
 
@@ -26,17 +40,17 @@ function playGame() {
         }
     }
 
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
 
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
-    if (humanScore == computerScore) console.log("Oops! It is a tied, nobody wins the game.");
-    else if (humanScore > computerScore)
-        console.log("You win the game!");
-    else 
-        console.log("You lose the game!");
+    //     const humanSelection = getHumanChoice();
+    //     const computerSelection = getComputerChoice();
+    //     playRound(humanSelection, computerSelection);
+    // }
+    // if (humanScore == computerScore) console.log("Oops! It is a tied, nobody wins the game.");
+    // else if (humanScore > computerScore)
+    //     console.log("You win the game!");
+    // else 
+    //     console.log("You lose the game!");
 }
 
 function getComputerChoice() {
