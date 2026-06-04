@@ -5,6 +5,7 @@ body {
 
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -15,8 +16,6 @@ main {
 
 .grid-container {
     display: flex;
-    height: 480px;
-    width: 480px;
     border: 1px solid yellowgreen;
     flex-wrap: wrap;
 }
