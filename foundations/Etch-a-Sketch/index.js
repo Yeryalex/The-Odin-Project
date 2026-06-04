@@ -7,13 +7,12 @@ const button = document.createElement("button");
 gridContainer.classList.add("grid-container");
 gridContainer.style.width = `${GRID_SIZE}px`;
 gridContainer.style.height = `${GRID_SIZE}px`;
-button.innerText = "Change grid size";
+button.innerText = "CHANGE GRID SIZE";
 main.appendChild(button);
 main.appendChild(gridContainer);
 document.body.appendChild(main);
 
-
-displayGrid(16);
+displayGrid(80);
 
 function displayGrid(squaresNumber) {
 
@@ -30,12 +29,18 @@ function displayGrid(squaresNumber) {
 
 }
 
+function randomColor() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
 
-
+    return (`rgb(${r}, ${g}, ${b})`);
+}
+console.log(randomColor());
 gridContainer.addEventListener("mouseover", (e) => {
 
     if (e.target.tagName === "DIV" && e.target.classList.value == "grid-unit") {
-        e.target.style.background = "red";
+        e.target.style.background = randomColor();
     }
 });
 

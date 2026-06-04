@@ -9,18 +9,31 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    border: 3px solid red;
     box-sizing: border-box;
-
+    background-color: rgb(104, 138, 155);
 }
 
 .grid-container {
     display: flex;
-    border: 1px solid yellowgreen;
     flex-wrap: wrap;
+    margin-top: 40px;
 }
 
 .grid-unit {
     box-sizing: border-box;
-    border: 1px solid black;
+    border: 1px solid rgb(97, 104, 128);
+}
+
+button {
+    height: 30px;
+    width: 200px;
+    border-radius: 12px;
+    background-color: aliceblue;
+    border: 1px solid rgb(168, 199, 225);
+    font-weight: 600;
+    color: rgb(3, 61, 91);
+}
+
+button:hover {
+    background-color: rgb(192, 218, 241);
 }
