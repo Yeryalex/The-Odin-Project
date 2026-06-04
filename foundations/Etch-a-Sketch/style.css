@@ -10,7 +10,7 @@ main {
     align-items: center;
     height: 100vh;
     box-sizing: border-box;
-    background-color: rgb(104, 138, 155);
+    background-image: linear-gradient(to bottom right, rgb(15, 44, 33), rgb(35, 18, 71));
 }
 
 .grid-container {

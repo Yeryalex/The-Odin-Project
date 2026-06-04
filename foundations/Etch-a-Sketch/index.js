@@ -26,7 +26,6 @@ function displayGrid(squaresNumber) {
         gridUnit.style.height = `${heightGrid}px`;
         gridContainer.appendChild(gridUnit);
     }
-
 }
 
 function randomColor() {
@@ -36,7 +35,7 @@ function randomColor() {
 
     return (`rgb(${r}, ${g}, ${b})`);
 }
-console.log(randomColor());
+
 gridContainer.addEventListener("mouseover", (e) => {
 
     if (e.target.tagName === "DIV" && e.target.classList.value == "grid-unit") {
@@ -44,14 +43,16 @@ gridContainer.addEventListener("mouseover", (e) => {
     }
 });
 
-button.addEventListener("click", (e) => {
+button.addEventListener("click", () => {
 
     let squaresNumber = parseInt(prompt("Change the grid size", "from 1-100"));
+
     if (!squaresNumber || squaresNumber < 1 || squaresNumber > 100) {
         alert("Something went wrong! Please, try a valid value.")
-        return };
-       const gridUnit = document.querySelectorAll(".grid-unit");
-        gridUnit.forEach(div => div.remove())
-
+        return ; 
+    }
+    const gridUnit = document.querySelectorAll(".grid-unit");
+    gridUnit.forEach(div => div.remove())
+    
     displayGrid(parseInt(squaresNumber));
 });
