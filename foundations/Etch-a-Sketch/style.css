@@ -16,7 +16,7 @@ main {
 .grid-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 40px;
+    margin: 40px 0px;
 }
 
 .grid-unit {

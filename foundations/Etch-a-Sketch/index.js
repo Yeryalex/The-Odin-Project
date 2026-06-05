@@ -1,4 +1,5 @@
 let GRID_SIZE = 600;
+let isDrawing = false;
 
 const main = document.createElement("main");
 const gridContainer = document.createElement("div");
@@ -10,6 +11,7 @@ gridContainer.style.height = `${GRID_SIZE}px`;
 button.innerText = "CHANGE GRID SIZE";
 main.appendChild(button);
 main.appendChild(gridContainer);
+
 document.body.appendChild(main);
 
 displayGrid(80);
@@ -36,12 +38,34 @@ function randomColor() {
     return (`rgb(${r}, ${g}, ${b})`);
 }
 
-gridContainer.addEventListener("mouseover", (e) => {
+
+
+gridContainer.addEventListener("mousedown", (e) => {
+
+    isDrawing = true;
 
     if (e.target.tagName === "DIV" && e.target.classList.value == "grid-unit") {
         e.target.style.background = randomColor();
     }
 });
+
+
+gridContainer.addEventListener("mouseover", (e) => {
+
+    if(!isDrawing) return ;
+    
+    if (e.target.tagName === "DIV" && e.target.classList.value == "grid-unit") {
+        e.target.style.background = randomColor();
+    }
+});
+
+gridContainer.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+  });
+
+window.addEventListener("mouseup", () => {
+    isDrawing = false;
+})
 
 button.addEventListener("click", () => {
 
