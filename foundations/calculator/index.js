@@ -2,7 +2,7 @@ let operation = [];
 let digits = "";
 let cleanZero = false;
 const input = document.querySelector("#calculator");
-const buttonContainer = document.querySelector(".buttonContainer");
+const buttonContainer = document.querySelector(".button-container");
 const equalsButton = document.querySelector("#equals");
 
 equalsButton.addEventListener("click", () => {
@@ -30,13 +30,11 @@ buttonContainer.addEventListener("click", (e) => {
                 cleanZero = false;
                 input.value = input.value.slice(0, input.value.length - 1);
                 input.value += e.target.textContent;
-                console.log("hola", input.value)
 
             }
             else
             {
                 input.value += e.target.textContent;
-                console.log("mundo", input.value)
 
             }
         }
@@ -56,7 +54,6 @@ buttonContainer.addEventListener("click", (e) => {
         operation.push(e.target.textContent);
         input.value += e.target.textContent;
     }
-    console.log(digits);
 })
 
 function add(a, b) {
