@@ -13,9 +13,9 @@
    flex-direction: column;
    height: 500px;
    border: 1px solid gray;
-   max-width: 300px;
-   min-width: 300px;
-   background-color: black;
+   max-width: 310px;
+   min-width: 310px;
+   background-color: rgb(94, 94, 94);
    border-radius: 10px;
 }
 main {
@@ -23,7 +23,7 @@ main {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    
+    background-color: rgb(44, 41, 42);
 }
 button {
     border-radius: 50%;
@@ -43,5 +43,5 @@ input {
 }
 
 .button-container {
-  padding: 4px;
+  padding: 9px;
 }
