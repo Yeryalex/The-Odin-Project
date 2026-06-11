@@ -5,6 +5,7 @@ const input = document.querySelector("#calculator");
 const buttonContainer = document.querySelector(".button-container");
 const equalsButton = document.querySelector("#equals");
 
+
 equalsButton.addEventListener("click", () => {
 
     if (digits != ""){
@@ -13,8 +14,6 @@ equalsButton.addEventListener("click", () => {
     }
        
     input.value = doTheMath(operation);
-    console.log(operation);
-
 })
 
 buttonContainer.addEventListener("click", (e) => {
@@ -44,6 +43,14 @@ buttonContainer.addEventListener("click", (e) => {
        input.value += content;
        digits += content;
     }
+
+    if (e.target.className == "clear") {
+
+        input.value = "0";
+        digits = "0";
+        operation = [];
+    }
+
     if (e.target.className == "operator") {
 
         if ((input.value.endsWith("+") || input.value.endsWith("-") || input.value.endsWith("*") || input.value.endsWith("/")) 
@@ -66,10 +73,6 @@ function doTheMath(operation) {
         if (i == 0) {
             result = parseFloat(operation[i++]);
         }
-        console.log("length = ", operation.length)
-        console.log("i = ", i)
-        console.log(result)
-        console.log("after i++", operation[i])
         switch (operation[i]) {
 
             case "+":

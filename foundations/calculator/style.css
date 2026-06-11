@@ -12,25 +12,40 @@
    display: flex;
    flex-direction: column;
    height: 500px;
-   border: 1px solid gray;
    max-width: 310px;
-   min-width: 310px;
-   background-color: rgb(94, 94, 94);
+   background-color: black;
    border-radius: 10px;
+
 }
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(44, 41, 42);
+    background-color: rgb(30, 28, 29);
 }
+
 button {
     border-radius: 50%;
     height: 70px;
     width: 70px;
     color: white;
-    background-color: rgb(255, 176, 40);
+    font-size: 30px;
+    margin: 1px;
+}
+
+.operator {
+    background-color: #e68d08;
+    border: 1px solid #de9d2e;
+}
+.digits {
+    background-color: #333333;
+    border: 1px solid gray;
+}
+
+.clear, #equals {
+    background-color: #757373;
+    border: 1px solid rgb(72, 70, 70);
 }
 
 input {
@@ -38,10 +53,32 @@ input {
     border: none;
     background-color: black;
     color: white;
-    border-radius: 10px;
-    font-size: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 3px solid rgb(37, 37, 37);
+    font-size: 60px;
+    padding-top: 120px;
+    padding-right: 15px;
+    box-sizing: border-box;
 }
 
 .button-container {
-  padding: 9px;
+    box-sizing: border-box;
+    padding: 4px;
+}
+
+.digits:hover {
+    background-color: #757373;
+    border: 1px solid rgb(37, 37, 37);
+
+}
+.clear:hover, #equals:hover {
+    background-color: #9d9c9c;
+    border: 1px solid rgb(72, 70, 70);
+}
+.operator:hover {
+    background-color: #efa22d;
+
 }
