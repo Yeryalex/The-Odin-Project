@@ -5,7 +5,6 @@ const input = document.querySelector("#calculator");
 const buttonContainer = document.querySelector(".button-container");
 const equalsButton = document.querySelector("#equals");
 
-
 equalsButton.addEventListener("click", () => {
 
     if (digits != ""){

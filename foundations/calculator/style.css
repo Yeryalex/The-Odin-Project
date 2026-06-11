@@ -6,6 +6,7 @@
 #calculator {
     text-align: right;
     font-family: monospace;
+    outline: none;
 }
 
 .container-general {
