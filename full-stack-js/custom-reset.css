@@ -1,0 +1,63 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+
+
+  Matt Brictson, understanding the key differences between normalize and reset.
+  (The below code by Josh Comeau is more a normalize than a reset,
+   I suggest to call it an hybrid in order to fix inconsistencies,
+    but not all of them, between browsers)
+  
+    https://mattbrictson.com/blog/css-normalize-and-reset
+  */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  *:not(dialog) {
+    margin: 0;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+  
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+
+
+  /* The properties below are intent to be use when working with REACT framework, so
+  no need to use it all the time. Use it specially when writing CSS from scratch*/
+
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  /* these Comments and info was last read and updated in 2026 */
