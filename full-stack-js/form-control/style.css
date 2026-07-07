@@ -170,7 +170,6 @@ input {
   height: 24px;
   border: 1px solid rgb(179, 179, 179);
   border-radius: 3px;
-
 }
 
 .second-column p {
@@ -178,7 +177,7 @@ input {
 }
 
 .button-section {
-  padding-top: 50px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -199,3 +198,18 @@ input {
   padding-top: 5px;
   font-size: 12px;
 }
+
+input[id="email"]:user-invalid {
+  border: 1px solid rgb(191, 66, 66);
+ }
+ 
+ input[id="email"]:user-valid {
+  border: 1px solid rgb(100, 207, 96);
+ }
+
+ input:focus {
+
+  outline: none;
+  border: 1px  solid rgb(88, 159, 218);
+  box-shadow: 2px 2px 1px rgb(211, 209, 209);
+ }

@@ -23,7 +23,6 @@
             
         </div>
        
-
         <form action="#">
             <div class="p-messages">
                 <p>Whether you want to witness the rings of Saturn up close or feel zero gravity on the Martian frontier, your journey begins right here. Space is limited.</p>
@@ -38,32 +37,34 @@
                         <label for="first-name">FIRST NAME</label>
                         <input type="text" name="firstName" id="first-name">
                         </p>
-
-                        <p>
-                        <label for="last-name">LAST NAME</label>
-                        <input type="text" name="lastName" id="last-name">
-                        </p>
                     
                         <p>
                         <label for="email">EMAIL</label>
-                        <input type="email" name="email" id="email">
+                        <input type="email" name="email" id="email" required>
                         </p>
+
+                        <p>
+                            <label for="password">PASSWORD</label>
+                            <input type="password" name="password" id="password" required>
+                        </p>
+
                         </div>
                     
                         <div class="second-column">
+
+                        <p>
+                            <label for="last-name">LAST NAME</label>
+                            <input type="text" name="lastName" id="last-name">
+                        </p>
+                        
                         <p>
                         <label for="phone">PHONE NUMBER</label>
                         <input type="tel" name="phone" id="phone">
                         </p>
-
-                        <p>
-                        <label for="password">PASSWORD</label>
-                        <input type="password" name="password" id="password">
-                        </p>
-
+                        
                         <p>
                         <label for="confirm">CONFIRM PASSWORD</label>
-                        <input type="password" name="confirm" id="confirm">
+                        <input type="password" name="confirm" id="confirm" required>
                         </p>
                     </div>
                 </div>
