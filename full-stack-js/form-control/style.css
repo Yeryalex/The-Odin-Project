@@ -34,12 +34,27 @@
     text-wrap: balance;
   }
 
+  input,
+textarea,
+select,
+button {
+  width: 200px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 /* /////////////////////////////////////////// */
 
 @font-face {
     font-family: adapted-font-unique;
     src: url(font-family/Unique.ttf);
 }
+
+
+body {
+  background-color: rgba(194, 190, 190, 0.1);
+  }
 
 .split-container {
     display: flex;
@@ -99,6 +114,88 @@
     width: 100%;
     text-align: center;
 }
+
 a {
     color: inherit;
+}
+
+.p-messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  font-family: serif;
+  font-size: large;
+  height: 25%;
+  padding: 0 20px 20px 30px;
+}
+
+.p-messages p:first-child {
+  font-size: larger;
+}
+
+.p-messages p + p {
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.form-section {
+
+  background-color: rgb(255, 255, 255);
+  height: 30%;
+  padding-left: 30px;
+  box-shadow: 0 5px 5px rgb(230, 229, 229);
+}
+
+.form-section > h2 {
+  padding: 10px 0 0 0;
+  color: rgb(62, 70, 77);
+}
+
+.inputs-container {
+  display: flex;
+  height: 200px;
+}
+
+.first-column  p, .second-column p {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  font-size: x-small;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+input {
+  height: 24px;
+  border: 1px solid rgb(179, 179, 179);
+  border-radius: 3px;
+
+}
+
+.second-column p {
+  margin-left: 80px;
+}
+
+.button-section {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-section button:first-child {
+  background-color: rgb(193, 206, 221);
+
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  box-shadow: 2px 2px 2px rgb(156, 159, 161);
+  color: rgb(36, 37, 37);
+  cursor: pointer;
+}
+
+.button-section p {
+  padding-top: 5px;
+  font-size: 12px;
 }

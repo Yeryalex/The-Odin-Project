@@ -23,21 +23,57 @@
             
         </div>
        
-        <section class="form-content-side">
-            <div class="message-header">
+
+        <form action="#">
+            <div class="p-messages">
                 <p>Whether you want to witness the rings of Saturn up close or feel zero gravity on the Martian frontier, your journey begins right here. Space is limited.</p>
                 <p>The countdown has begun. Will you be on board?</p>
             </div>
-        
-            <div class="form-wrapper">
+            <section class="form-section">
                 <h2>Let's do this</h2>
-                <form action="">
+                <div class="inputs-container">
+                    
+                    <div class="first-column">
+                        <p>
+                        <label for="first-name">FIRST NAME</label>
+                        <input type="text" name="firstName" id="first-name">
+                        </p>
 
-                    <button>Create Account</button>
-                    <p>Already have an account? <a href="#">Log in</a></p>
-                </form>
+                        <p>
+                        <label for="last-name">LAST NAME</label>
+                        <input type="text" name="lastName" id="last-name">
+                        </p>
+                    
+                        <p>
+                        <label for="email">EMAIL</label>
+                        <input type="email" name="email" id="email">
+                        </p>
+                        </div>
+                    
+                        <div class="second-column">
+                        <p>
+                        <label for="phone">PHONE NUMBER</label>
+                        <input type="tel" name="phone" id="phone">
+                        </p>
+
+                        <p>
+                        <label for="password">PASSWORD</label>
+                        <input type="password" name="password" id="password">
+                        </p>
+
+                        <p>
+                        <label for="confirm">CONFIRM PASSWORD</label>
+                        <input type="password" name="confirm" id="confirm">
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <div class="button-section">
+                <button type="submit">Create Account</button>
+                <p>Already have an account? <a href="#">Log in</a></p>
             </div>
-        </section>
+        </form>
+
     </main>
 </body>
 </html>
