@@ -40,5 +40,37 @@
     text-wrap: balance;
   }
 
+
+body * {
+    outline: 1px dashed saddlebrown;
+}
+
 /* /////////////////////////////////////////////////// */
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) minmax(500px, 1fr) minmax(200px, 300px);
+    grid-template-rows: 200px;
+    height: 100vh;
+    max-width: 1500px;
+}
+
+header {
+    grid-column: 2 / 4;
+}
+
+.sidebar {
+    background-color: rgb(15, 176, 234);
+    grid-column: 1 / 2;
+    grid-row: 1/4;
+}
+
+main {
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+}
+
+.extra-info {
+    grid-row: 2 / 4;
+}
 
