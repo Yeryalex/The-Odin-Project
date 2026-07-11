@@ -43,7 +43,7 @@
 
 body * {
   font-family: roboto-font;
-  /* outline: 1px dashed saddlebrown; */
+  /* outline: 1px dashed rgb(250, 220, 217); */
 }
 
 /* /////////////////////////////////////////////////// */
@@ -104,9 +104,49 @@ main {
   list-style-type: none;
   font-size: large;
   row-gap: 0.5rem;
-  font-weight: 6s00;
+  font-weight: 600;
 
 }
 .links-sidebar svg, .title-sidebar svg {
   justify-self: center;
+}
+
+.search-bar-container {
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: 1fr 250px;
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: center;
+  justify-items: start;
+}
+
+.search-bar > input {
+  height: 24px;
+  background-color: rgb(210, 221, 230);
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.notifications {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: small;
+}
+
+.notifications svg + svg {
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.notifications > svg {
+  margin: 0 18px 0 0;
 }
