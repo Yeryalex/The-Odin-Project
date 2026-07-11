@@ -55,14 +55,16 @@ body * {
 
 .container {
     display: grid;
-    grid-template-columns: 250px minmax(500px, 1fr) minmax(200px, 300px);
-    grid-template-rows: 200px;
+    grid-template-columns: 200px 1fr 180px;
+    grid-template-rows: 135px;
     height: 100vh;
     max-width: 1500px;
 }
 
 header {
     grid-column: 2 / 4;
+    box-shadow: 2px 2px 2px rgb(211, 209, 209);
+    padding: 16px 32px;
 }
 
 .sidebar {
@@ -72,8 +74,11 @@ header {
 }
 
 main {
-    grid-column: 2 / 3;
-    grid-row: 2 / 4;
+  padding: 16px 16px;
+
+  background-color: rgb(210, 221, 230);
+  grid-column: 2 / 3;
+   grid-row: 2 / 4;
 }
 
 .extra-info {
@@ -112,9 +117,9 @@ main {
 }
 
 .search-bar-container {
-  padding: 16px 24px;
   display: grid;
   grid-template-columns: 1fr 250px;
+
 }
 
 .search-bar {
@@ -122,6 +127,8 @@ main {
   grid-template-columns: 1fr 10fr;
   align-items: center;
   justify-items: start;
+  min-width: 300px;
+
 }
 
 .search-bar > input {
@@ -149,4 +156,68 @@ main {
 
 .notifications > svg {
   margin: 0 18px 0 0;
+}
+
+.container-logo-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+}
+
+.big-logo-title {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  font-weight: 600;
+  min-width: 300px;
+}
+
+.big-logo-title > svg {
+  grid-row: 1 / 3;
+  border-radius: 50%;
+  margin-right: 12px;
+  min-width: 48px;
+}
+
+.big-logo-title > p {
+  font-size: x-small;
+}
+
+.big-logo-title > p + p {
+  font-size: medium;
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+}
+
+.button-container button {
+  font-size: small;
+  font-weight: 600;
+  color: white;
+  width: 80px;
+  background-color: rgb(26, 149, 237);
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  padding-top: 4px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.cards-container .card {
+  background-color: white;
+  height: 150px;
+  border-left: 8px solid rgb(255, 201, 66);
+  border-radius: 5px;
+}
+
+.card p {
+  font-size: xx-small;
 }
