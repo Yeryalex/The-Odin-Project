@@ -301,12 +301,14 @@ main > h3 {
 }
 
 .trending-logo-title > p {
+  align-self: flex-end;
   font-size: x-small;
   font-weight: 400;
 
 }
 
 .trending-logo-title > p + p {
+  align-self: flex-start;
   font-weight: 200;
   font-size: xx-small;
 }
