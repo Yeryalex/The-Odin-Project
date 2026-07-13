@@ -74,7 +74,7 @@ header {
 }
 
 main {
-  padding: 24px 8px 0 24px;
+  padding: 24px 20px 0 24px;
   background-color: rgb(210, 221, 230);
   grid-column: 2 / 3;
    grid-row: 2 / 4;
@@ -276,14 +276,14 @@ main > h3 {
 }
 
 .trending-section {
-    padding: 12px;
+  padding: 10px;
   background-color: white;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   gap: 10px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px rgb(176, 176, 176);
-  height: 200px;
+  height: 228px;
 }
 
 .trending-logo-title {
@@ -313,4 +313,8 @@ main > h3 {
 
 .extra-info  .announcements-section + h3 {
   padding: 18px 0 8px 0;
+}
+
+.extra-info h3 {
+  font-weight: 400;
 }
