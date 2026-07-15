@@ -1,6 +1,9 @@
-const title = document.querySelector('#title')
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
+const isRead = document.querySelector('#read');
+const addBookForm = document.querySelector('#book-form');
 
-console.log(title);
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -14,22 +17,24 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function () {
-        return (`${this.title} ${this.author}, ${this.pages} pages, ${(this.read) ? "read" : "not read yet"}`);
-    }
+}
+
+Book.prototype.info = function () {
+    return (`${this.title} ${this.author}, ${this.pages} pages, ${(this.read) ? "read" : "not read yet"}`);
+};
+
+
+function addBookToLibrary(objectDetailsBook) {
+  myLibrary.push(objectDetailsBook);
 }
 
 
-const x = new Book("The amazing", "Yery R", 99, true);
+addBookForm.addEventListener("submit", (e) => {
 
+    // e.preventDefault();
 
-// console.log(x);
+    addBookToLibrary(new Book(title.value, author.value, pages.value, isRead.checked));
+    console.log(myLibrary);
+    addBookForm.reset();
+});
 
-// function addBookToLibrary(objectDetailsBook) {
-//   myLibrary.push(objectDetailsBook);
-// }
-
-
-// title.addEventListener("input", (e)  =>{
-//     console.log(e.target.value);
-// });
