@@ -52,24 +52,27 @@ function displayCards(myLibrary) {
         const pTitle = document.createElement("p");
         const pAuthor = document.createElement("p");
         const pPages = document.createElement("p");
-        const pRead = document.createElement("p");
+        const pReadButton = document.createElement("button");
+        const pIsRead = document.createElement("p");
         
         pTitle.innerText = element.title;
         pAuthor.innerText = element.author;
         pPages.innerText = element.pages;
-        pRead.innerText = element.read;
+        pReadButton.innerText = "Read";
+        pIsRead.innerText = element.read;
 
         card.classList.add("card");
         tittleCard.classList.add("book-title");
         infoCard.classList.add("info-card");
         pAuthor.classList.add("author");
         pPages.classList.add("pages");
-        pRead.classList.add("read");
+        pReadButton.classList.add("read-button");
         
         tittleCard.appendChild(pTitle);
         infoCard.appendChild(pAuthor);
         infoCard.appendChild(pPages);
-        infoCard.appendChild(pRead);
+        infoCard.appendChild(pReadButton);
+        infoCard.appendChild(pIsRead);
         
         card.appendChild(tittleCard);
         card.appendChild(infoCard);
