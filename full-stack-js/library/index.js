@@ -4,6 +4,7 @@ const pages = document.querySelector('#pages');
 const isRead = document.querySelector('#read');
 const addBookForm = document.querySelector('#book-form');
 const cardContainer = document.querySelector('.card-container');
+const buttonRead = document.querySelector(".read-button");
 
 const myLibrary = [];
 
@@ -20,8 +21,10 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-Book.prototype.info = function () {
-    return (`${this.title} ${this.author}, ${this.pages} pages, ${(this.read) ? "read" : "not read yet"}`);
+Book.prototype.toggleRead = function () {
+    
+    this.read = !this.read;
+    return (this.read);
 };
 
 
@@ -59,8 +62,9 @@ function displayCards(myLibrary) {
         pTitle.innerText = element.title;
         pAuthor.innerText = element.author;
         pPages.innerText = element.pages;
-        pReadButton.innerText = "Read";
-        pIsRead.innerText = element.read;
+        pReadButton.innerText = "State";
+        (element.read) ? pIsRead.innerText = "Read": pIsRead.innerText = "Unread";
+
 
         card.classList.add("card");
         card.setAttribute("data-ids", element.id);
@@ -72,6 +76,8 @@ function displayCards(myLibrary) {
         pAuthor.classList.add("author");
         pPages.classList.add("pages");
         pReadButton.classList.add("read-button");
+        pIsRead.classList.add("read");
+        pIsRead.classList.add("unread");
         
         tittleCard.appendChild(pTitle);
         tittleCard.appendChild(deleteCardButton);
@@ -101,8 +107,20 @@ function displayCards(myLibrary) {
                 });
             });
         });
+
+
+        pReadButton.addEventListener("click", () => {
+        
+            if (element.toggleRead()) {
+                pIsRead.innerText = "Read";
+                pIsRead.className = "read";
+            }
+            else {
+                pIsRead.innerText = "Unread";
+                pIsRead.className = "unread";
+            }
+            // (element.toggleRead()) ? pIsRead.innerText = "Read" : pIsRead.innerText = "Unread";
+        });
+
     });
 }
-
-
-

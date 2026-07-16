@@ -202,3 +202,21 @@ body {
 .remove-button:hover {
   background-color: rgb(255, 191, 204);
 }
+
+.read::after {
+  display: inline-flex;
+    content: '';
+    background-image: url('Icons/check-bold.svg');
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.unread::after {
+  display: inline-flex;
+    content: '';
+    background-image: url('Icons/close-thick.svg');
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+}
