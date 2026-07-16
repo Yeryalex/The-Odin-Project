@@ -59,11 +59,11 @@ body * {
     grid-template-rows: 135px;
     height: 100vh;
     max-width: 1500px;
-}
+    }
 
 header {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
     grid-column: 2 / 4;
     box-shadow: 2px 2px 8px rgb(174, 174, 174);
     padding: 16px 32px;
@@ -118,6 +118,7 @@ aside {
   font-weight: 600;
 
 }
+
 .links-sidebar svg, .title-sidebar svg {
   justify-self: center;
 }
