@@ -27,7 +27,7 @@ Book.prototype.info = function () {
 
 addBookForm.addEventListener("submit", (e) => {
 
-    // e.preventDefault();
+    e.preventDefault();
     while (cardContainer.firstChild) {
         cardContainer.removeChild(cardContainer.firstChild);
     }
