@@ -181,3 +181,7 @@ body {
   justify-items: center;
   padding: 10px;
 }
+
+.pages::after {
+  content: " pages";
+}
