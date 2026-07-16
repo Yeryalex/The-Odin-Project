@@ -63,9 +63,11 @@ function displayCards(myLibrary) {
         pIsRead.innerText = element.read;
 
         card.classList.add("card");
+        card.setAttribute("data-ids", element.id);
         tittleCard.classList.add("book-title");
         deleteCardButton.classList.add("remove-button");
         deleteCardButton.src = "Icons/close-thick.svg";
+        deleteCardButton.alt = "delete-card";
         infoCard.classList.add("info-card");
         pAuthor.classList.add("author");
         pPages.classList.add("pages");
@@ -82,5 +84,25 @@ function displayCards(myLibrary) {
         card.appendChild(infoCard);
         
         cardContainer.appendChild(card);
+
+        deleteCardButton.addEventListener("click", (e) => {
+            
+            const id = card.dataset.ids;
+            
+            cardContainer.childNodes.forEach((e , index) => {
+                if (e.dataset.ids === id) {
+                    cardContainer.removeChild(cardContainer.childNodes[index]);
+                }
+            
+                myLibrary.forEach((e, index) => {
+                if (e.id === id) {
+                    myLibrary.splice(index, 1)
+                }
+                });
+            });
+        });
     });
 }
+
+
+
