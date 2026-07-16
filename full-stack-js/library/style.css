@@ -154,6 +154,7 @@ body {
 }
 
 .book-title {
+  position: relative;
   border-bottom: 1px solid gray;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -184,4 +185,20 @@ body {
 
 .pages::after {
   content: " pages";
+}
+
+.remove-button {
+  padding: 4px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: rgb(235, 209, 214);
+}
+
+.remove-button:hover {
+  background-color: rgb(255, 191, 204);
 }

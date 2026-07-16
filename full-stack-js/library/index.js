@@ -48,6 +48,7 @@ function displayCards(myLibrary) {
         
         const card = document.createElement("div");
         const tittleCard = document.createElement("div");
+        const deleteCardButton = document.createElement("img");
         const infoCard = document.createElement("div");
         const pTitle = document.createElement("p");
         const pAuthor = document.createElement("p");
@@ -63,12 +64,15 @@ function displayCards(myLibrary) {
 
         card.classList.add("card");
         tittleCard.classList.add("book-title");
+        deleteCardButton.classList.add("remove-button");
+        deleteCardButton.src = "Icons/close-thick.svg";
         infoCard.classList.add("info-card");
         pAuthor.classList.add("author");
         pPages.classList.add("pages");
         pReadButton.classList.add("read-button");
         
         tittleCard.appendChild(pTitle);
+        tittleCard.appendChild(deleteCardButton);
         infoCard.appendChild(pAuthor);
         infoCard.appendChild(pPages);
         infoCard.appendChild(pReadButton);
