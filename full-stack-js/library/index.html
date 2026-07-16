@@ -7,19 +7,33 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    
-    <div>
+    <header>
+        <h1>My Book Colletion</h1>
+    </header>
+    <div class="main-grid">
+    <div class="form-container">
         <form  id="book-form">
-            <label for="title">Title</label>
-            <input type="text" id="title" required>
-            <label for="author">Author</label>
+            <p>
+
+            <label class="label-block" for="title">Title</label>
+            <input type="text" id="title" required>   
+        </p>
+        <p>
+            <label class="label-block" for="author">Author</label>
             <input type="text" id="author" required>
-            <label for="pages">Pages</label>
-            <input type="number" id="pages" required>
-            <label for="read">It is read</label>
-            <input type="checkbox" id="read">
-            
+        </p>
+        <p>
+            <label class="label-block" for="pages">Pages</label>
+            <input type="number" min="0" id="pages" required>
+        </p>
+        
+        <div class="button-container">
+            <p>
+                <label for="read">It's read</label>
+                <input type="checkbox" id="read">
+            </p>
             <button type="submit">Add book</button>
+        </div>
         </form>
     </div>
     <main>
@@ -27,7 +41,7 @@
 
         </div>
     </main>
-
+</div>
     <script src="/index.js" defer></script>
 </body>
 </html>

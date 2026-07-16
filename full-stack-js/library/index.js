@@ -43,9 +43,9 @@ function addBookToLibrary(objectDetailsBook) {
 }
 
 function displayCards(myLibrary) {
+   
     myLibrary.forEach(element => {
         
-
         const card = document.createElement("div");
         const tittleCard = document.createElement("div");
         const infoCard = document.createElement("div");
@@ -73,6 +73,5 @@ function displayCards(myLibrary) {
         card.appendChild(infoCard);
         
         cardContainer.appendChild(card);
-
     });
 }

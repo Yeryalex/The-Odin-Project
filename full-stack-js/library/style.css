@@ -41,3 +41,92 @@
   }
   
   /* ///////////////////////////////////////////// */
+
+
+  @font-face {
+    font-family: roboto-font;
+    src: url(/fonts/Roboto-font-family.ttf);
+  }
+  
+  @font-face {
+    font-family: garamond-font;
+    src: url(/fonts/EBGaramond-VariableFont_wght.ttf);
+  }
+
+  header {
+    font-family: garamond-font;
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #8abfe7;
+    color: #056da1;
+    font-size: x-large;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    height: 90vh;
+  }
+
+  .label-block {
+    display: block;
+}
+
+  .form-container {
+    background-color: #d3e2ee;
+    width: 100%;
+  }
+
+ main {
+    background-color: #F4F7F5;
+  }
+
+#book-form {
+    padding: 24px;
+    margin: 48px 24px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+#book-form p + p {
+  margin-top: 18px;
+}
+
+.button-container {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-container > p {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.button-container > p input {
+  margin-left: 10px;
+}
+
+.button-container > button {
+  border-radius: 8px;
+  border: none;
+  padding: 6px 16px;
+  background-color: #8abfe7;
+}
+
+#book-form > p input{
+  padding-left: 10px;
+  border: none;
+  background-color: #d5dde4;
+  border-radius: 4px;
+  outline: none;
+  width: 100%;
+}
+
+
+.book-title {
+  background-color: rgb(255, 251, 147);
+}
