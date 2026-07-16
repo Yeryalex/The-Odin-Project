@@ -114,6 +114,12 @@
   border-radius: 8px;
   border: none;
   padding: 6px 16px;
+  background-color: #d5dde4;
+  font-weight: 500;
+
+}
+
+.button-container > button:hover {
   background-color: #8abfe7;
 }
 
@@ -126,7 +132,35 @@
   width: 100%;
 }
 
+.card-container {
+  margin: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.card {
+  border-radius: 10px;
+  height: 200px;
+  min-width: 100%;
+  border: 1px solid gray;
+  min-width: 200px;
+}
 
 .book-title {
-  background-color: rgb(255, 251, 147);
+  border-bottom: 1px solid gray;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #ffec99;
+  height: 70%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.book-title > p {
+  width: 150px;
 }

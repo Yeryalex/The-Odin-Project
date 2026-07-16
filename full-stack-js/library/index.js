@@ -49,11 +49,12 @@ function displayCards(myLibrary) {
         const card = document.createElement("div");
         const tittleCard = document.createElement("div");
         const infoCard = document.createElement("div");
+        const pTitle = document.createElement("p");
         const pAuthor = document.createElement("p");
         const pPages = document.createElement("p");
         const pRead = document.createElement("p");
         
-        tittleCard.innerText = element.title;
+        pTitle.innerText = element.title;
         pAuthor.innerText = element.author;
         pPages.innerText = element.pages;
         pRead.innerText = element.read;
@@ -65,6 +66,7 @@ function displayCards(myLibrary) {
         pPages.classList.add("pages");
         pRead.classList.add("read");
         
+        tittleCard.appendChild(pTitle);
         infoCard.appendChild(pAuthor);
         infoCard.appendChild(pPages);
         infoCard.appendChild(pRead);
