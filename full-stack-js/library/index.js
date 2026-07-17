@@ -6,6 +6,44 @@ const addBookForm = document.querySelector('#book-form');
 const cardContainer = document.querySelector('.card-container');
 const buttonRead = document.querySelector(".read-button");
 
+const sample = [
+{
+    title: "The Hitchhiker's Guide to the Galaxy",
+    author: "Douglas Adams",
+    pages: 224,
+    read: true
+},
+{
+    title: "Dune",
+    author: "Frank Herbert",
+    pages: 617,
+    read: false
+},
+{
+    title: "Project Hail Mary",
+    author: "Andy Weir",
+    pages: 476,
+    read: true
+},
+{
+    title: "Neuromancer",
+    author: "William Gibson",
+    pages: 271,
+    read: false
+},
+{
+    title: "Cosmos",
+    author: "Carl Sagan",
+    pages: 384,
+    read: true
+},
+{
+    title: "Foundation",
+    author: "Isaac Asimov",
+    pages: 255,
+    read: false
+}];
+
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -27,6 +65,11 @@ Book.prototype.toggleRead = function () {
     return (this.read);
 };
 
+sample.forEach((element) => {
+    myLibrary.push(new Book(element.title, element.author, element.pages, element.read));
+});
+
+displayCards(myLibrary);
 
 addBookForm.addEventListener("submit", (e) => {
 
@@ -44,6 +87,7 @@ addBookForm.addEventListener("submit", (e) => {
 function addBookToLibrary(objectDetailsBook) {
     myLibrary.push(objectDetailsBook);
 }
+
 
 function displayCards(myLibrary) {
    
