@@ -87,12 +87,25 @@ body {
     background-color: #F4F7F5;
   }
 
+.insert-book {
+  margin: 48px 24px 24px 24px;
+  text-align: center;
+  color: #056da1;
+  font-size: x-large;
+}
+
 #book-form {
-    padding: 24px;
-    margin: 48px 24px;
+    font-weight: 600;
+    padding: 36px 24px;
+    margin: 0px 24px;
     background-color: white;
     border-radius: 10px;
+    height: 350px;
   }
+
+#book-form > p input{
+  font-weight: 300;
+}
 
 #book-form p + p {
   margin-top: 18px;
@@ -107,7 +120,7 @@ body {
 .button-container > p {
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  margin-left: 4px;
 }
 
 .button-container > p input {
@@ -182,6 +195,7 @@ body {
   align-items: center;
   justify-items: center;
   padding: 18px;
+  font-weight: 900;
 }
 
 .pages::after {
@@ -197,7 +211,6 @@ body {
   right: -4px;
   border-radius: 50%;
   text-align: center;
-  /* background-color: rgb(250, 219, 226); */
   background-color: #d5dde4;
 
 }
@@ -232,11 +245,12 @@ body {
 }
 
 .read-button {
+  color: inherit;
   border-radius: 8px;
   border: none;
   padding: 6px 16px;
   background-color: #d5dde4;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .read-button:hover {
