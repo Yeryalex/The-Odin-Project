@@ -63,8 +63,15 @@ function displayCards(myLibrary) {
         pAuthor.innerText = element.author;
         pPages.innerText = element.pages;
         pReadButton.innerText = "State";
-        (element.read) ? pIsRead.innerText = "Read": pIsRead.innerText = "Unread";
 
+        if (element.read) {
+            pIsRead.innerText = "Read";
+            pIsRead.className = "read";
+        }
+        else {
+            pIsRead.innerText = "Unread";
+            pIsRead.className = "unread";
+        }
 
         card.classList.add("card");
         card.setAttribute("data-ids", element.id);
@@ -76,8 +83,6 @@ function displayCards(myLibrary) {
         pAuthor.classList.add("author");
         pPages.classList.add("pages");
         pReadButton.classList.add("read-button");
-        pIsRead.classList.add("read");
-        pIsRead.classList.add("unread");
         
         tittleCard.appendChild(pTitle);
         tittleCard.appendChild(deleteCardButton);
@@ -91,11 +96,11 @@ function displayCards(myLibrary) {
         
         cardContainer.appendChild(card);
 
-        deleteCardButton.addEventListener("click", (e) => {
+        deleteCardButton.addEventListener("click", () => {
             
             const id = card.dataset.ids;
             
-            cardContainer.childNodes.forEach((e , index) => {
+            cardContainer.childNodes.forEach((e, index) => {
                 if (e.dataset.ids === id) {
                     cardContainer.removeChild(cardContainer.childNodes[index]);
                 }
@@ -119,7 +124,6 @@ function displayCards(myLibrary) {
                 pIsRead.innerText = "Unread";
                 pIsRead.className = "unread";
             }
-            // (element.toggleRead()) ? pIsRead.innerText = "Read" : pIsRead.innerText = "Unread";
         });
 
     });
