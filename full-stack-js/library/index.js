@@ -59,12 +59,12 @@ function displayCards(myLibrary) {
         const pReadButton = document.createElement("button");
         const pIsRead = document.createElement("p");
         
-        pTitle.innerText = element.title;
-        pAuthor.innerText = element.author;
+        pTitle.innerText = upperFirstLetter(element.title);
+        pAuthor.innerText = upperFirstLetter(element.author);
         pPages.innerText = element.pages;
         pReadButton.innerText = "State";
 
-        if (element.read) {
+        if (element.read) { 
             pIsRead.innerText = "Read";
             pIsRead.className = "read";
         }
@@ -83,6 +83,7 @@ function displayCards(myLibrary) {
         pAuthor.classList.add("author");
         pPages.classList.add("pages");
         pReadButton.classList.add("read-button");
+        pIsRead.classList.add("text-read");
         
         tittleCard.appendChild(pTitle);
         tittleCard.appendChild(deleteCardButton);
@@ -113,18 +114,27 @@ function displayCards(myLibrary) {
             });
         });
 
-
         pReadButton.addEventListener("click", () => {
         
             if (element.toggleRead()) {
                 pIsRead.innerText = "Read";
-                pIsRead.className = "read";
+                pIsRead.setAttribute("class", "read text-read");
             }
             else {
                 pIsRead.innerText = "Unread";
-                pIsRead.className = "unread";
+                pIsRead.setAttribute("class", "unread text-read");
             }
         });
 
     });
+}
+
+function upperFirstLetter(author) {
+
+    return (author.split(" ")
+            .filter((e) => e !== "")
+            .map((e) => {
+                return (e[0].toUpperCase() + e.slice(1).toLowerCase());
+            })
+    ).join(" ");
 }
