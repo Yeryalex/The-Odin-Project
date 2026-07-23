@@ -67,7 +67,33 @@ function GameBoard() {
         currentBoard.forEach((e) => console.log(e))
     }
 
-    return ({getBoard, dropToken, printBoard});
+    const threeInLine = () => {
+        
+        let gameEnd = false;
+        
+        gameEnd = board.some((rows) => {
+        
+           return (rows.every((cell) => cell.getValue() === "X" || cell.getValue() === "O"));
+        });
+        if (gameEnd) return (gameEnd);
+
+        for (let i = 0; i < row; i++) {
+            console.log("-------------", i ,"---", (board[0][i].getValue() === board[1][i].getValue() && board[1][i].getValue() === board[2][i].getValue()));
+            if ((board[0][i].getValue() === board[1][i].getValue()
+                 && board[1][i].getValue() === board[2][i].getValue()) ){
+
+                    if (board[0][i].getValue() !== 0 
+                    && board[1][i].getValue() !==  0
+                    && board[2][i].getValue() !== 0) {
+                        return(true);
+                    }
+            }
+        }
+
+        return ("no vertical")
+    };
+
+    return ({getBoard, dropToken, printBoard, threeInLine});
 }
 
 
@@ -84,8 +110,15 @@ function Cell() {
 
 let game = GameBoard();
 
-game.dropToken("X", 0, 2);
-game.dropToken("X", 1, 1);
-game.dropToken("X", 2, 0);
+// game.dropToken("X", 0, 1);
+// game.dropToken("X", 1, 2);
+// game.dropToken("X", 2, 1);
+
+game.dropToken("O", 1, 0);
+game.dropToken("O", 1, 1);
+game.dropToken("O", 1, 2);
+
 
 game.printBoard();
+
+console.log(game.threeInLine())
