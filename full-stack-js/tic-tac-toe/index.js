@@ -1,4 +1,4 @@
-function GameBoard() {
+const GameBoard = (() => {
     
     const board = [];
     const row = 3;
@@ -71,7 +71,7 @@ function GameBoard() {
     };
 
     return ({getBoard, dropToken, printBoard, threeInLine});
-}
+})();
 
 
 function Cell() {
@@ -88,7 +88,7 @@ function Cell() {
 
 function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
-    let board = GameBoard();
+    let board = GameBoard;
 
     const players = [
         {
