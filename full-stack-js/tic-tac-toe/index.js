@@ -32,17 +32,25 @@ const GameBoard = (() => {
         
         gameEnd = board.some((rows) => {
         
-           return (rows.every((cell) => cell.getValue() === "X" || cell.getValue() === "O"));
-        });
-        if (gameEnd) return (gameEnd);
+           return (rows.every((cell) => cell.getValue() === "X")) || rows.every((cell) => cell.getValue() === "O");
 
+        });
+
+        if (gameEnd){
+            console.log("Horizontal ---",gameEnd);
+
+            return (gameEnd);
+
+        }
         for (let i = 0; i < row; i++) {
             if ((board[0][i].getValue() === board[1][i].getValue()
                  && board[1][i].getValue() === board[2][i].getValue()) ){
 
-                    if (board[0][i].getValue() !== 0 
-                    && board[1][i].getValue() !==  0
-                    && board[2][i].getValue() !== 0) {
+                    if (board[0][i].getValue() !== "" 
+                    && board[1][i].getValue() !==  ""
+                    && board[2][i].getValue() !== "") {
+                        console.log("Vertical ---",gameEnd);
+
                         return(true);
                     }
             }
@@ -51,22 +59,26 @@ const GameBoard = (() => {
             if ((board[0][0].getValue() === board[1][1].getValue()
                  && board[1][1].getValue() === board[2][2].getValue()) ){
 
-                    if (board[0][0].getValue() !== 0 
-                    && board[1][1].getValue() !==  0
-                    && board[2][2].getValue() !== 0) {
+                    if (board[0][0].getValue() !== "" 
+                    && board[1][1].getValue() !==  ""
+                    && board[2][2].getValue() !== "") {
+                        console.log("Horizontal 1 ---",gameEnd);
+
                         return(true);
                     }
             }
             if ((board[0][2].getValue() === board[1][1].getValue()
                 && board[1][1].getValue() === board[2][0].getValue()) ){
 
-                   if (board[0][2].getValue() !== 0 
-                   && board[1][1].getValue() !==  0
-                   && board[2][0].getValue() !== 0) {
+                   if (board[0][2].getValue() !== "" 
+                   && board[1][1].getValue() !==  ""
+                   && board[2][0].getValue() !== "") {
+                    console.log("Horizontal 2 ---",gameEnd);
+
                        return(true);
                    }
            }
-
+           console.log("finale ---",gameEnd);
         return (gameEnd)
     };
 
@@ -75,7 +87,7 @@ const GameBoard = (() => {
 
 
 function Cell() {
-    let value = 0;
+    let value = "";
 
     const addToken = (playerToken) => {
         value = playerToken;
@@ -141,6 +153,9 @@ function DisplayGameScreen() {
 
     const game = DisplayController();
     const board = document.querySelector(".game-container");
+    const playerTurn = document.querySelector("h3");
+
+    playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
 
 
     const displayBoardScreen = () => {
@@ -165,6 +180,7 @@ function DisplayGameScreen() {
         const selectedRow = e.target.dataset.row;
 
         game.playRound(selectedRow, selectedColumn);
+        playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
         displayBoardScreen();
     }
     board.addEventListener("click", handleClickCell);
