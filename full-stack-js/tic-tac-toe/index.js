@@ -90,7 +90,6 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     let board = GameBoard();
 
-
     const players = [
         {
             name: player1,
@@ -110,24 +109,40 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     const getActivePlayer = () => activePlayer;
 
-    return ({getActivePlayer, board});
+    const printNewRound = () => {
+        board.printBoard();
+        console.log(`${getActivePlayer().name}'s turn.`);
+        console.log("-----------------------------");
+
+    }
+
+    const playRound = (row, column) => {
+       
+        board.dropToken(getActivePlayer().token, row, column);
+       
+        console.log(getActivePlayer().name, " has selected a cell");
+        if (board.threeInLine())
+        {
+            board.printBoard();
+            console.log(getActivePlayer().name," is the winner!");
+            return ;
+        }
+        switchPlayerTurn();
+        printNewRound();
+    }
+
+    printNewRound();
+
+    return ({playRound, getActivePlayer});
 }
 
+let game = DisplayController();
+
+game;
 
 
-// game.dropToken("X", 0, 2);
-// game.dropToken("X", 1, 1);
-// game.dropToken("X", 2, 2);
-
-// game.dropToken("X", 0, 2);
-// game.dropToken("X", 1, 2);
-// game.dropToken("X", 2, 2);
-
-// game.dropToken("O", 0, 0);
-// game.dropToken("O", 0, 1);
-// game.dropToken("O", 0, 2);
-
-
-// game.printBoard();
-
-DisplayController().board.printBoard();
+game.playRound(0,0);
+game.playRound(0,2);
+game.playRound(1,1);
+game.playRound(1,0);
+game.playRound(2,2);
