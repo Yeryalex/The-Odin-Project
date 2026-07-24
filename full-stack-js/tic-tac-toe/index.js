@@ -131,18 +131,45 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
         printNewRound();
     }
 
-    printNewRound();
-
-    return ({playRound, getActivePlayer});
+    return ({playRound, getActivePlayer, getBoard: board.getBoard()});
 }
 
-let game = DisplayController();
-
-game;
+const gameContainer = document.querySelector(".game-container");
 
 
-game.playRound(0,0);
-game.playRound(0,2);
-game.playRound(1,1);
-game.playRound(1,0);
-game.playRound(2,2);
+function DisplayGameScreen() {
+
+    const game = DisplayController();
+    const board = document.querySelector(".game-container");
+
+
+    const displayBoardScreen = () => {
+        gameContainer.textContent = "";
+
+        game.getBoard.forEach((row, rowIndex) =>
+            row.forEach((column, columnIndex) => {
+            
+                const button = document.createElement("button")
+
+                button.classList.add("cell");
+                button.dataset.column = columnIndex;
+                button.dataset.row = rowIndex;
+                button.innerText = column.getValue();
+                board.appendChild(button);
+            })
+        );
+    }
+
+    const handleClickCell = (e) => {
+        const selectedColumn = e.target.dataset.column;
+        const selectedRow = e.target.dataset.row;
+
+        game.playRound(selectedRow, selectedColumn);
+        displayBoardScreen();
+    }
+    board.addEventListener("click", handleClickCell);
+    displayBoardScreen();
+}
+
+
+DisplayGameScreen();

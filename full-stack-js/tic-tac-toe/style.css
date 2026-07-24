@@ -39,3 +39,20 @@
   }
 /* /////////////////////////////////////////////////////// */
 
+body {
+    background-color: rgb(92, 92, 254);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.game-container {
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
