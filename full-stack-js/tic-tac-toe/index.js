@@ -13,7 +13,10 @@ const GameBoard = (() => {
 
     const dropToken = (playerToken, rowPos, columnPos) => {
         
-        board[rowPos][columnPos].addToken(playerToken);
+        if (board[rowPos][columnPos].getValue() === "")
+        {
+            board[rowPos][columnPos].addToken(playerToken);
+        }
     };
 
     const getBoard = () => board;
@@ -72,7 +75,7 @@ const GameBoard = (() => {
 
                    if (board[0][2].getValue() !== "" 
                    && board[1][1].getValue() !==  ""
-                   && board[2][0].getValue() !== "") {
+                   && board[2][0].getValue() !== "git ") {
                     console.log("Horizontal 2 ---",gameEnd);
 
                        return(true);
@@ -104,16 +107,16 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     const players = [
         {
-            name: player1,
+            name: player2,
             token: "X",
         },
         {
-            name: player2,
+            name: player1,
             token: "O",
         }
     ];
 
-    let activePlayer = players[0];
+    let activePlayer = players[1];
 
     const switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
@@ -129,7 +132,12 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
     }
 
     const playRound = (row, column) => {
-       
+      
+        
+        //////////////////CHECK THIS//////////////
+        if (board.getBoard()[row][column].getValue() === "") {
+            switchPlayerTurn();
+        }
         board.dropToken(getActivePlayer().token, row, column);
        
         console.log(getActivePlayer().name, " has selected a cell");
@@ -139,7 +147,8 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
             console.log(getActivePlayer().name," is the winner!");
             return ;
         }
-        switchPlayerTurn();
+        console.log("+++++++++++++++++", board.getBoard()[row][column].getValue());
+
         printNewRound();
     }
 
