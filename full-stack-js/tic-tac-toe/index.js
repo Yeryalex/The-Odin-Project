@@ -185,16 +185,16 @@ function DisplayGameScreen() {
     }
 
     const handleClickCell = (e) => {
-        
+
         const selectedColumn = e.target.dataset.column;
         const selectedRow = e.target.dataset.row;
-        console.log("CAN PLAY", game.canPlay);
 
         if (game.canPlay) {
             if (game.playRound(selectedRow, selectedColumn) === null) {
              
                 winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
                 game.canPlay = false;
+                board.removeEventListener("click", handleClickCell);
             }
             
             playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
