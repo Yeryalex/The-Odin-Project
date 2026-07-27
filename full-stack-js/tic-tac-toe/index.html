@@ -10,9 +10,25 @@
     <main>
         <h1>Tic Tac Toe</h1>
         <div class="game-container"></div>
+        <div class="input-section">
+            
+            <h2>Insert player's name</h2>
+            <form action="#" id="form-section">
+            <p>
+                <label for="player1">Player 1</label>
+                <input type="text" id="player1">
+            </p>   
+            <p>
+            <label for="player2">Player 2</label>
+            <input type="text" id="player2">
+            </p>
+            <button type="submit" class="start-game">Start Game</button>    
+        </form>
+        </div>
         <h3></h3>
-        <p class="winner-message"></p>
-        <!-- <dialog open>hola</dialog> -->
+        <div class="winner-container">
+            <p class="winner-message"></p>
+        </div>
     </main>
     <script src="index.js" defer></script>
 </body>

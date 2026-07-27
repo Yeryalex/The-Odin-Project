@@ -21,14 +21,6 @@ const GameBoard = (() => {
 
     const getBoard = () => board;
 
-    const printBoard = () => {
-        
-        let currentBoard = board.map((row) =>
-            row.map((cell) => cell.getValue()));
-
-        currentBoard.forEach((e) => console.log(e))
-    }
-
     const threeInLine = () => {
         
         let gameEnd = false;
@@ -39,12 +31,8 @@ const GameBoard = (() => {
 
         });
 
-        if (gameEnd){
-            console.log("Horizontal ---",gameEnd);
+        if (gameEnd) return (gameEnd);
 
-            return (gameEnd);
-
-        }
         for (let i = 0; i < row; i++) {
             if ((board[0][i].getValue() === board[1][i].getValue()
                  && board[1][i].getValue() === board[2][i].getValue()) ){
@@ -52,8 +40,6 @@ const GameBoard = (() => {
                     if (board[0][i].getValue() !== "" 
                     && board[1][i].getValue() !==  ""
                     && board[2][i].getValue() !== "") {
-                        console.log("Vertical ---",gameEnd);
-
                         return(true);
                     }
             }
@@ -65,8 +51,6 @@ const GameBoard = (() => {
                     if (board[0][0].getValue() !== "" 
                     && board[1][1].getValue() !==  ""
                     && board[2][2].getValue() !== "") {
-                        console.log("Horizontal 1 ---",gameEnd);
-
                         return(true);
                     }
             }
@@ -76,16 +60,13 @@ const GameBoard = (() => {
                    if (board[0][2].getValue() !== "" 
                    && board[1][1].getValue() !==  ""
                    && board[2][0].getValue() !== "git ") {
-                    console.log("Horizontal 2 ---",gameEnd);
-
                        return(true);
                    }
            }
-           console.log("finale ---",gameEnd);
         return (gameEnd)
     };
 
-    return ({getBoard, dropToken, printBoard, threeInLine});
+    return ({getBoard, dropToken, threeInLine});
 })();
 
 
@@ -101,7 +82,7 @@ function Cell() {
 }
 
 
-function DisplayController(player1 = "1st player", player2 = "2nd player") {
+function DisplayController(player1, player2) {
 
     let board = GameBoard;
     let canPlay = true;
@@ -125,30 +106,14 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     const getActivePlayer = () => activePlayer;
 
-    const printNewRound = () => {
-        board.printBoard();
-        console.log(`${getActivePlayer().name}'s turn.`);
-        console.log("-----------------------------");
-
-    }
-
     const playRound = (row, column) => {
       
         if (board.getBoard()[row][column].getValue() === "") {
 
             board.dropToken(getActivePlayer().token, row, column);
-
-            if (board.threeInLine()) {
-                
-                board.printBoard();
-                console.log(getActivePlayer().name," is the winner!");
-                return null;
-            }
-
+            if (board.threeInLine()) return null;
             switchPlayerTurn();
         }
-       
-        printNewRound();
     }
 
     return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay});
@@ -159,18 +124,29 @@ const gameContainer = document.querySelector(".game-container");
 
 function DisplayGameScreen() {
 
-    const game = DisplayController();
     const board = document.querySelector(".game-container");
     const playerTurn = document.querySelector("h3");
     const winnerMessage = document.querySelector(".winner-message");
+    const winnerContainer = document.querySelector(".winner-container")
+    const player1 = document.querySelector("#player1");
+    const player2 = document.querySelector("#player2");
+    // const startButton = document.querySelector(".start-game");
+    const form = document.querySelector("#form-section");
+    const inputSection = document.querySelector(".input-section");
+   
+    form.addEventListener("submit", startGame);   
+    
 
-    playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+    function startGame() {
+    inputSection.hidden = true;
 
-
-    const displayBoardScreen = () => {
-        gameContainer.textContent = "";
-
-        game.getBoard.forEach((row, rowIndex) =>
+        const game = DisplayController(player1.value , player2.value);
+        playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+        
+        const displayBoardScreen = () => {
+            
+            gameContainer.textContent = "";
+            game.getBoard.forEach((row, rowIndex) =>
             row.forEach((column, columnIndex) => {
             
                 const button = document.createElement("button")
@@ -184,27 +160,29 @@ function DisplayGameScreen() {
         );
     }
 
-    const handleClickCell = (e) => {
+        const handleClickCell = (e) => {
 
-        const selectedColumn = e.target.dataset.column;
-        const selectedRow = e.target.dataset.row;
+            const selectedColumn = e.target.dataset.column;
+            const selectedRow = e.target.dataset.row;
 
-        if (game.canPlay) {
-            if (game.playRound(selectedRow, selectedColumn) === null) {
+            if (game.canPlay) {
+                if (game.playRound(selectedRow, selectedColumn) === null) {
              
-                winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
-                game.canPlay = false;
-                board.removeEventListener("click", handleClickCell);
-            }
+                    winnerContainer.classList.add("show");
+                    winnerMessage.classList.add("show-message");
+                    winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+                    game.canPlay = false;
+                    board.removeEventListener("click", handleClickCell);
+                }
             
-            playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
-            displayBoardScreen();
+                playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+                displayBoardScreen();
+            }
         }
+
+        board.addEventListener("click", handleClickCell);
+        displayBoardScreen();
     }
-
-    board.addEventListener("click", handleClickCell);
-    displayBoardScreen();
 }
-
 
 DisplayGameScreen();
