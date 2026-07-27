@@ -107,16 +107,16 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     const players = [
         {
-            name: player2,
+            name: player1,
             token: "X",
         },
         {
-            name: player1,
+            name: player2,
             token: "O",
         }
     ];
 
-    let activePlayer = players[1];
+    let activePlayer = players[0];
 
     const switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
@@ -133,22 +133,20 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     const playRound = (row, column) => {
       
-        
-        //////////////////CHECK THIS//////////////
         if (board.getBoard()[row][column].getValue() === "") {
+
+            board.dropToken(getActivePlayer().token, row, column);
+
+            if (board.threeInLine()) {
+                
+                board.printBoard();
+                console.log(getActivePlayer().name," is the winner!");
+                return null;
+            }
+
             switchPlayerTurn();
         }
-        board.dropToken(getActivePlayer().token, row, column);
        
-        console.log(getActivePlayer().name, " has selected a cell");
-        if (board.threeInLine())
-        {
-            board.printBoard();
-            console.log(getActivePlayer().name," is the winner!");
-            return ;
-        }
-        console.log("+++++++++++++++++", board.getBoard()[row][column].getValue());
-
         printNewRound();
     }
 
@@ -163,6 +161,7 @@ function DisplayGameScreen() {
     const game = DisplayController();
     const board = document.querySelector(".game-container");
     const playerTurn = document.querySelector("h3");
+    const winnerMessage = document.querySelector(".winner-message");
 
     playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
 
@@ -188,7 +187,11 @@ function DisplayGameScreen() {
         const selectedColumn = e.target.dataset.column;
         const selectedRow = e.target.dataset.row;
 
-        game.playRound(selectedRow, selectedColumn);
+        const x = game.playRound(selectedRow, selectedColumn);
+        if (x === null)
+        {
+            winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+        }
         playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
         displayBoardScreen();
     }
