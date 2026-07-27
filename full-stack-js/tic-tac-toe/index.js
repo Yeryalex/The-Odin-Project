@@ -104,6 +104,7 @@ function Cell() {
 function DisplayController(player1 = "1st player", player2 = "2nd player") {
 
     let board = GameBoard;
+    let canPlay = true;
 
     const players = [
         {
@@ -150,7 +151,7 @@ function DisplayController(player1 = "1st player", player2 = "2nd player") {
         printNewRound();
     }
 
-    return ({playRound, getActivePlayer, getBoard: board.getBoard()});
+    return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay});
 }
 
 const gameContainer = document.querySelector(".game-container");
@@ -184,17 +185,23 @@ function DisplayGameScreen() {
     }
 
     const handleClickCell = (e) => {
+        
         const selectedColumn = e.target.dataset.column;
         const selectedRow = e.target.dataset.row;
+        console.log("CAN PLAY", game.canPlay);
 
-        const x = game.playRound(selectedRow, selectedColumn);
-        if (x === null)
-        {
-            winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+        if (game.canPlay) {
+            if (game.playRound(selectedRow, selectedColumn) === null) {
+             
+                winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+                game.canPlay = false;
+            }
+            
+            playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+            displayBoardScreen();
         }
-        playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
-        displayBoardScreen();
     }
+
     board.addEventListener("click", handleClickCell);
     displayBoardScreen();
 }
