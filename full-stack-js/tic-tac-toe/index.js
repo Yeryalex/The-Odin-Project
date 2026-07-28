@@ -146,7 +146,7 @@ function DisplayGameScreen() {
         player1.hidden = true;
         h1.style.paddingBottom = null;
 
-        const game = DisplayController(player1.value , player2.value);
+        const game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
         playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
         
         const displayBoardScreen = () => {
