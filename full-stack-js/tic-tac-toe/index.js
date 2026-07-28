@@ -124,7 +124,7 @@ function DisplayController(player1, player2) {
 function DisplayGameScreen() {
 
     const board = document.querySelector(".game-container");
-    const playerTurn = document.querySelector("h3");
+    // const playerTurn = document.querySelector("h3");
     const winnerMessage = document.querySelector(".winner-message");
     const winnerContainer = document.querySelector(".winner-container")
     const player1 = document.querySelector("#player1");
@@ -145,9 +145,10 @@ function DisplayGameScreen() {
     
         modal.hidden = true;
         h1.style.paddingBottom = null;
+        // playerTurn.hidden = false;
 
         const game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
-        playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+        // playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
         
         const displayBoardScreen = () => {
             
@@ -165,19 +166,21 @@ function DisplayGameScreen() {
         );
     }
 
+
         const handleClickCell = (e) => {
 
             const selectedColumn = e.target.dataset.column;
             const selectedRow = e.target.dataset.row;
 
             if (game.canPlay) {
-                playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+
 
                 if (game.playRound(selectedRow, selectedColumn) === null) {
              
+                    // playerTurn.hidden = true;
                     restartButton.hidden = false;
                     restartContainer.appendChild(restartButton);
-                    playerTurn.style.height = "40px";
+                    // playerTurn.style.height = "40px";
                     winnerContainer.classList.add("show");
                     winnerMessage.classList.add("show-message");
                     winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
@@ -186,21 +189,23 @@ function DisplayGameScreen() {
                    
                    
                     function restartGame() {
+
                         game.getBoard.forEach((rows) =>
                             rows.forEach((column) => column.addToken(""))
                         );
-                        playerTurn.innerText = "";
                         board.textContent = "";
                         modal.hidden = false;
                         winnerContainer.classList.remove("show");
                         winnerMessage.innerText = "";
+                        // playerTurn.hidden = false;
+
                         DisplayGameScreen();
                     }
                     
                     restartButton.addEventListener("click", restartGame)
 
                 }
-            
+                // playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
                 displayBoardScreen();
             }
         }
