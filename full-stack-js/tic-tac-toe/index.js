@@ -119,7 +119,6 @@ function DisplayController(player1, player2) {
     return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay});
 }
 
-const gameContainer = document.querySelector(".game-container");
 
 
 function DisplayGameScreen() {
@@ -130,20 +129,21 @@ function DisplayGameScreen() {
     const winnerContainer = document.querySelector(".winner-container")
     const player1 = document.querySelector("#player1");
     const player2 = document.querySelector("#player2");
-    // const startButton = document.querySelector(".start-game");
     const form = document.querySelector("#form-section");
-    const inputSection = document.querySelector(".input-section");
     const modal = document.querySelector(".modal");
     const h1 = document.querySelector("h1");
-    h1.style.paddingBottom = "30px";
+    const restartContainer = document.querySelector(".restart-container");
+    const restartButton = document.querySelector(".restart-button");
+    restartButton.innerText = "Restart";
+    restartButton.hidden = true;
+
+    h1.style.paddingBottom = "37px";
 
     form.addEventListener("submit", startGame);   
-    
 
     function startGame() {
     
         modal.hidden = true;
-        player1.hidden = true;
         h1.style.paddingBottom = null;
 
         const game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
@@ -151,12 +151,11 @@ function DisplayGameScreen() {
         
         const displayBoardScreen = () => {
             
-            gameContainer.textContent = "";
+            board.textContent = "";
             game.getBoard.forEach((row, rowIndex) =>
             row.forEach((column, columnIndex) => {
             
                 const button = document.createElement("button")
-
                 button.classList.add("cell");
                 button.dataset.column = columnIndex;
                 button.dataset.row = rowIndex;
@@ -172,16 +171,36 @@ function DisplayGameScreen() {
             const selectedRow = e.target.dataset.row;
 
             if (game.canPlay) {
+                playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+
                 if (game.playRound(selectedRow, selectedColumn) === null) {
              
+                    restartButton.hidden = false;
+                    restartContainer.appendChild(restartButton);
+                    playerTurn.style.height = "40px";
                     winnerContainer.classList.add("show");
                     winnerMessage.classList.add("show-message");
                     winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
                     game.canPlay = false;
                     board.removeEventListener("click", handleClickCell);
+                   
+                   
+                    function restartGame() {
+                        game.getBoard.forEach((rows) =>
+                            rows.forEach((column) => column.addToken(""))
+                        );
+                        playerTurn.innerText = "";
+                        board.textContent = "";
+                        modal.hidden = false;
+                        winnerContainer.classList.remove("show");
+                        winnerMessage.innerText = "";
+                        DisplayGameScreen();
+                    }
+                    
+                    restartButton.addEventListener("click", restartGame)
+
                 }
             
-                playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
                 displayBoardScreen();
             }
         }

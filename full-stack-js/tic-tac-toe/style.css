@@ -55,11 +55,19 @@ body {
 }
 
 h1 {
-  /* padding-bottom: 20px; */
   font-family: mitica-mitica;
   font-size: 80px;
   color: rgb(255, 255, 255);
   text-shadow: 4px 4px 2px rgb(10, 7, 98) ;
+}
+
+h2 {
+  margin: 20px;
+}
+
+h3 {
+  font-size: x-large;
+  margin-top: 20px;
 }
 
 main {
@@ -81,12 +89,15 @@ main {
 }
 
 .cell {
+    font-size: 50px;
     padding: 0;
     margin: 0;
+    background-color: white;
+    border: 1px solid rgb(134, 134, 134);
 }
 
 .show {
-  margin-top: 90px;
+  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +107,6 @@ main {
   width: 500px;
   background-color: rgba(34, 8, 160, 0.9);
 }
-
 
 .modal {
   position: absolute;
@@ -133,9 +143,7 @@ main {
   background-color: rgb(122, 122, 243);
 }
 
-h2 {
-  margin: 20px;
-}
+
 
 input {
   outline: none;
