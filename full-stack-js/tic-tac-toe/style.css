@@ -55,8 +55,9 @@ body {
 }
 
 h1 {
+  padding: 20px;
   font-family: mitica-mitica;
-  font-size: 80px;
+  font-size: 40px;
   color: rgb(255, 255, 255);
   text-shadow: 4px 4px 2px rgb(10, 7, 98) ;
 }
@@ -81,8 +82,8 @@ main {
 
 .game-container {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -103,8 +104,8 @@ main {
   justify-content: center;
   position: absolute;
   font-size: xx-large;
-  height: 500px;
-  width: 500px;
+  height: 300px;
+  width: 350px;
   background-color: rgba(34, 8, 160, 0.9);
 }
 
@@ -119,8 +120,8 @@ main {
   justify-content: center;
   font-size: large;
   background-color: rgba(34, 8, 160, 0.9);
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
 }
 
 .button-start {

@@ -141,8 +141,10 @@ function DisplayGameScreen() {
 
     form.addEventListener("submit", startGame);   
 
-    function startGame() {
+    function startGame(e) {
     
+            e.preventDefault();
+
         modal.hidden = true;
         h1.style.paddingBottom = null;
         // playerTurn.hidden = false;
