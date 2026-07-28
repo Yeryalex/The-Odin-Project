@@ -39,9 +39,26 @@
   }
 /* /////////////////////////////////////////////////////// */
 
+@font-face {
+  font-family: mitica-mitica;
+  src: url(fonts/MiTica.otf);
+
+  font-family: consolamono;
+  src: url(fonts/ConsolaMono.ttf);
+}
 
 body {
     background-color: rgb(92, 92, 254);
+    color: rgb(255, 255, 255);
+    font-family: consolamono;
+
+}
+
+h1 {
+  font-family: mitica-mitica;
+  font-size: 80px;
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 4px 2px rgb(10, 7, 98) ;
 }
 
 main {
@@ -67,30 +84,57 @@ main {
 }
 
 .show {
-  margin-top: 20px;
+  margin-top: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   font-size: xx-large;
-  color: rgb(255, 255, 255);
-  background-color: rgba(34, 8, 160, 0.9);
   height: 500px;
   width: 500px;
+  background-color: rgba(34, 8, 160, 0.9);
 }
 
 
-
+.modal {
+  position: absolute;
+}
 
 .input-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* position: absolute; */
   font-size: large;
-  color: rgb(255, 255, 255);
   background-color: rgba(34, 8, 160, 0.9);
   height: 500px;
   width: 500px;
+}
+
+.button-start {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.start-game {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(92, 92, 254);
+  color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: 600;
+}
+
+.start-game:hover {
+  background-color: rgb(122, 122, 243);
+}
+
+h2 {
+  margin: 20px;
+}
+
+form > p {
+  margin-top: 15px;
 }

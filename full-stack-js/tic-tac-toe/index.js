@@ -133,12 +133,15 @@ function DisplayGameScreen() {
     // const startButton = document.querySelector(".start-game");
     const form = document.querySelector("#form-section");
     const inputSection = document.querySelector(".input-section");
+    const modal = document.querySelector(".modal");
    
     form.addEventListener("submit", startGame);   
     
 
     function startGame() {
-    inputSection.hidden = true;
+    
+        modal.hidden = true;
+        player1.hidden = true;
 
         const game = DisplayController(player1.value , player2.value);
         playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
