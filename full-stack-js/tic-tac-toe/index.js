@@ -164,7 +164,7 @@ function displayBoardScreen() {
 function  startGame(e) {
     
     e.preventDefault();
-    game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
+    game = DisplayController(player1.value === "" ? "Player One" : player1.value , player2.value === "" ? "Player Two" : player2.value);
     playerTurn.hidden = false;
     playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
     modal.hidden = true;

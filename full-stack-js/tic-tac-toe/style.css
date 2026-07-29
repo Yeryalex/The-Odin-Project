@@ -102,7 +102,6 @@ main {
   }
 
 .show {
-  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +112,7 @@ main {
   background-color: rgba(34, 8, 160, 0.9);
   align-self: center;
   justify-self: center;
-
+  border-radius: 10px;
 }
 
 .modal {
@@ -131,6 +130,7 @@ main {
   justify-content: center;
   font-size: large;
   background-color: rgba(34, 8, 160, 0.9);
+  border-radius: 20px;
   height: 400px;
   width: 400px;
 }
