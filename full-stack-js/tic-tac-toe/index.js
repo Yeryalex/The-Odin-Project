@@ -108,10 +108,13 @@ function DisplayController(player1, player2) {
 
     const playRound = (row, column) => {
       
+        console.log(board.getBoard()[row][column].getValue());
         if (board.getBoard()[row][column].getValue() === "") {
 
             board.dropToken(getActivePlayer().token, row, column);
-            if (board.threeInLine()) return null;
+            if (board.threeInLine()) {
+                return null;
+            }
             switchPlayerTurn();
         }
     }
@@ -120,101 +123,89 @@ function DisplayController(player1, player2) {
 }
 
 
+const board = document.querySelector(".game-container");
+const winnerMessage = document.querySelector(".winner-message");
+const winnerContainer = document.querySelector(".winner-container")
+const player1 = document.querySelector("#player1");
+const player2 = document.querySelector("#player2");
+const form = document.querySelector("#form-section");
+const modal = document.querySelector(".modal");
+const h1 = document.querySelector("h1");
+const restartContainer = document.querySelector(".restart-container");
+const restartButton = document.querySelector(".restart-button");
+let game;
+restartButton.innerText = "Restart";
+restartButton.hidden = true;
+h1.style.paddingBottom = "37px";
 
-function DisplayGameScreen() {
 
-    const board = document.querySelector(".game-container");
-    // const playerTurn = document.querySelector("h3");
-    const winnerMessage = document.querySelector(".winner-message");
-    const winnerContainer = document.querySelector(".winner-container")
-    const player1 = document.querySelector("#player1");
-    const player2 = document.querySelector("#player2");
-    const form = document.querySelector("#form-section");
-    const modal = document.querySelector(".modal");
-    const h1 = document.querySelector("h1");
-    const restartContainer = document.querySelector(".restart-container");
-    const restartButton = document.querySelector(".restart-button");
-    restartButton.innerText = "Restart";
-    restartButton.hidden = true;
+form.addEventListener("submit", startGame);
+board.addEventListener("click", handleClickCell);
+restartButton.addEventListener("click", restartGame)
 
-    h1.style.paddingBottom = "37px";
 
-    form.addEventListener("submit", startGame);   
+    function displayBoardScreen() {
+        board.textContent = "";
 
-    function startGame(e) {
-    
-            e.preventDefault();
+        game.getBoard.forEach((row, rowIndex) =>
+        row.forEach((column, columnIndex) => {
+        
+            const button = document.createElement("button")
+            button.classList.add("cell");
+            button.dataset.column = columnIndex;
+            button.dataset.row = rowIndex;
+            button.innerText = column.getValue();
+            board.appendChild(button);
+        })
+        );
+
+    }
+
+    function  startGame(e) {
+
+        e.preventDefault();
+        game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
 
         modal.hidden = true;
         h1.style.paddingBottom = null;
-        // playerTurn.hidden = false;
 
-        const game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
-        // playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
-        
-        const displayBoardScreen = () => {
-            
-            board.textContent = "";
-            game.getBoard.forEach((row, rowIndex) =>
-            row.forEach((column, columnIndex) => {
-            
-                const button = document.createElement("button")
-                button.classList.add("cell");
-                button.dataset.column = columnIndex;
-                button.dataset.row = rowIndex;
-                button.innerText = column.getValue();
-                board.appendChild(button);
-            })
-        );
-    }
-
-
-        const handleClickCell = (e) => {
-
-            const selectedColumn = e.target.dataset.column;
-            const selectedRow = e.target.dataset.row;
-
-            if (game.canPlay) {
-
-
-                if (game.playRound(selectedRow, selectedColumn) === null) {
-             
-                    // playerTurn.hidden = true;
-                    restartButton.hidden = false;
-                    restartContainer.appendChild(restartButton);
-                    // playerTurn.style.height = "40px";
-                    winnerContainer.classList.add("show");
-                    winnerMessage.classList.add("show-message");
-                    winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
-                    game.canPlay = false;
-                    board.removeEventListener("click", handleClickCell);
-                   
-                   
-                    function restartGame() {
-
-                        game.getBoard.forEach((rows) =>
-                            rows.forEach((column) => column.addToken(""))
-                        );
-                        board.textContent = "";
-                        modal.hidden = false;
-                        winnerContainer.classList.remove("show");
-                        winnerMessage.innerText = "";
-                        // playerTurn.hidden = false;
-
-                        DisplayGameScreen();
-                    }
-                    
-                    restartButton.addEventListener("click", restartGame)
-
-                }
-                // playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
-                displayBoardScreen();
-            }
-        }
-
-        board.addEventListener("click", handleClickCell);
         displayBoardScreen();
-    }
-}
+    };
 
-DisplayGameScreen();
+    function handleClickCell(e) {
+
+        if (!e.target.classList.contains("cell")) return;
+
+        const selectedColumn = e.target.dataset.column;
+        const selectedRow = e.target.dataset.row;
+
+        if (game.canPlay) {
+
+
+            if (game.playRound(selectedRow, selectedColumn) === null) {
+         
+                restartButton.hidden = false;
+                restartContainer.appendChild(restartButton);
+                winnerContainer.classList.add("show");
+                winnerMessage.classList.add("show-message");
+                winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+                game.canPlay = false;
+            }
+            displayBoardScreen();
+        }
+    }
+
+
+    function restartGame() {
+
+        game.getBoard.forEach((rows) =>
+            rows.forEach((column) => column.addToken(""))
+        );
+        board.textContent = "";
+        modal.hidden = false;
+        winnerContainer.classList.remove("show");
+        winnerMessage.innerText = "";
+        game.canPlay = true;
+        form.reset();
+        // playerTurn.hidden = false;
+    }
