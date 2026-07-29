@@ -55,9 +55,8 @@ body {
 }
 
 h1 {
-  display: block;
-
-  padding: 20px;
+  align-self: flex-start;
+  padding: 40px;
   font-family: mitica-mitica;
   font-size: 40px;
   color: rgb(255, 255, 255);
@@ -71,24 +70,27 @@ h2 {
 h3 {
   font-size: x-large;
   margin-top: 20px;
+  align-self: center;
+  justify-self: center;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 40vh;
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 6fr;
+  height: 90vh; 
 }
 
 
 .game-container {
-    position: relative;
     width: 400px;
     height: 400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    align-self: center;
+    justify-self: center;
 }
 
 .cell {
@@ -100,7 +102,7 @@ main {
   }
 
 .show {
-  margin-top: 30px;
+  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,10 +111,17 @@ main {
   height: 300px;
   width: 350px;
   background-color: rgba(34, 8, 160, 0.9);
+  align-self: center;
+  justify-self: center;
+
 }
 
 .modal {
   position: absolute;
+  margin-top: 50px;
+  align-self: center;
+  justify-self: center;
+
 }
 
 .input-section {
@@ -162,4 +171,22 @@ form > p {
   justify-content: center;
   align-items: center;
   height: 10vh;
+}
+.restart-container {
+  align-self: center;
+  justify-self: center;
+}
+
+.restart-button {
+    border: none;
+
+  border-radius: 10px;
+  padding: 15px;
+  background-color: rgba(34, 8, 160, 0.9);
+  color: rgb(255, 255, 255);
+  font-size: large;
+  font-weight: 600;
+}
+.restart-button:hover {
+  background-color: rgb(122, 122, 243);
 }
