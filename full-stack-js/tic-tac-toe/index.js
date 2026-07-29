@@ -122,6 +122,7 @@ function DisplayController(player1, player2) {
     return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay, switchPlayerTurn});
 }
 
+const ticTacToe = (() => {
 
 const board = document.querySelector(".game-container");
 const winnerMessage = document.querySelector(".winner-message");
@@ -153,6 +154,7 @@ function displayBoardScreen() {
             button.classList.add("cell");
             button.dataset.column = columnIndex;
             button.dataset.row = rowIndex;
+            button.id = `cr${columnIndex}${rowIndex}`;
             button.innerText = column.getValue();
             board.appendChild(button);
         })
@@ -207,3 +209,4 @@ function restartGame() {
     form.reset();
     restartButton.hidden = true;
 }
+})();

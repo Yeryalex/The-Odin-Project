@@ -55,6 +55,8 @@ body {
 }
 
 h1 {
+  display: block;
+
   padding: 20px;
   font-family: mitica-mitica;
   font-size: 40px;
@@ -76,7 +78,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 40vh;
 }
 
 
@@ -94,8 +96,8 @@ main {
     padding: 0;
     margin: 0;
     background-color: white;
-    border: 1px solid rgb(134, 134, 134);
-}
+    border: 2px solid gray;
+  }
 
 .show {
   margin-top: 30px;
@@ -153,4 +155,11 @@ input {
 
 form > p {
   margin-top: 15px;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
 }
