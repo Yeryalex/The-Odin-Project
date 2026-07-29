@@ -119,7 +119,7 @@ function DisplayController(player1, player2) {
         }
     }
 
-    return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay});
+    return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay, switchPlayerTurn});
 }
 
 
@@ -133,23 +133,22 @@ const modal = document.querySelector(".modal");
 const h1 = document.querySelector("h1");
 const restartContainer = document.querySelector(".restart-container");
 const restartButton = document.querySelector(".restart-button");
+const playerTurn = document.querySelector("h3");
 let game;
 restartButton.innerText = "Restart";
 restartButton.hidden = true;
-h1.style.paddingBottom = "37px";
-
 
 form.addEventListener("submit", startGame);
 board.addEventListener("click", handleClickCell);
 restartButton.addEventListener("click", restartGame)
 
-
-    function displayBoardScreen() {
-        board.textContent = "";
-
-        game.getBoard.forEach((row, rowIndex) =>
+function displayBoardScreen() {
+    
+    board.textContent = "";
+    
+    game.getBoard.forEach((row, rowIndex) =>
         row.forEach((column, columnIndex) => {
-        
+            
             const button = document.createElement("button")
             button.classList.add("cell");
             button.dataset.column = columnIndex;
@@ -157,55 +156,54 @@ restartButton.addEventListener("click", restartGame)
             button.innerText = column.getValue();
             board.appendChild(button);
         })
-        );
+    );
+}
 
-    }
+function  startGame(e) {
+    
+    e.preventDefault();
+    game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
+    playerTurn.hidden = false;
+    playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+    modal.hidden = true;
+    h1.style.paddingBottom = null;
+    displayBoardScreen();
+};
 
-    function  startGame(e) {
-
-        e.preventDefault();
-        game = DisplayController(player1.value === "" ? "Player 1" : player1.value , player2.value === "" ? "Player 2" : player2.value);
-
-        modal.hidden = true;
-        h1.style.paddingBottom = null;
-
-        displayBoardScreen();
-    };
-
-    function handleClickCell(e) {
-
-        if (!e.target.classList.contains("cell")) return;
-
-        const selectedColumn = e.target.dataset.column;
-        const selectedRow = e.target.dataset.row;
-
-        if (game.canPlay) {
-
-
-            if (game.playRound(selectedRow, selectedColumn) === null) {
-         
-                restartButton.hidden = false;
-                restartContainer.appendChild(restartButton);
-                winnerContainer.classList.add("show");
-                winnerMessage.classList.add("show-message");
-                winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
-                game.canPlay = false;
-            }
-            displayBoardScreen();
+function handleClickCell(e) {
+    
+    if (!e.target.classList.contains("cell")) return;
+    
+    const selectedColumn = e.target.dataset.column;
+    const selectedRow = e.target.dataset.row;
+    
+    if (game.canPlay) {
+        
+        if (game.playRound(selectedRow, selectedColumn) === null) {
+            
+            restartButton.hidden = false;
+            restartContainer.appendChild(restartButton);
+            winnerContainer.classList.add("show");
+            winnerMessage.classList.add("show-message");
+            winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+            game.canPlay = false;
+            playerTurn.hidden = true;
         }
+        
+        playerTurn.innerText = `${game.getActivePlayer().name}'s turn`;
+        displayBoardScreen();
     }
+}
 
-
-    function restartGame() {
-
-        game.getBoard.forEach((rows) =>
-            rows.forEach((column) => column.addToken(""))
-        );
-        board.textContent = "";
-        modal.hidden = false;
-        winnerContainer.classList.remove("show");
-        winnerMessage.innerText = "";
-        game.canPlay = true;
-        form.reset();
-        // playerTurn.hidden = false;
-    }
+function restartGame() {
+    
+    game.getBoard.forEach((rows) => rows.forEach((column) => column.addToken("")));
+        
+    board.textContent = "";
+    modal.hidden = false;
+    winnerContainer.classList.remove("show");
+    winnerMessage.innerText = "";
+    game.canPlay = true;
+    form.reset();
+    restartButton.hidden = true;
+}
