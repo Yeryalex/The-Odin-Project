@@ -108,7 +108,6 @@ function DisplayController(player1, player2) {
 
     const playRound = (row, column) => {
       
-        console.log(board.getBoard()[row][column].getValue());
         if (board.getBoard()[row][column].getValue() === "") {
 
             board.dropToken(getActivePlayer().token, row, column);
@@ -119,7 +118,7 @@ function DisplayController(player1, player2) {
         }
     }
 
-    return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay, switchPlayerTurn});
+    return ({playRound, getActivePlayer, getBoard: board.getBoard(), canPlay});
 }
 
 const ticTacToe = (() => {
@@ -158,7 +157,7 @@ function displayBoardScreen() {
             button.innerText = column.getValue();
             board.appendChild(button);
         })
-    );
+    );      
 }
 
 function  startGame(e) {
@@ -172,8 +171,17 @@ function  startGame(e) {
     displayBoardScreen();
 };
 
+function draw() {
+
+    let x = game.getBoard.some((row) =>
+        row.some((column) =>  column.getValue() === "")
+    );  
+    console.log(x);
+}
+
 function handleClickCell(e) {
     
+draw();
     if (!e.target.classList.contains("cell")) return;
     
     const selectedColumn = e.target.dataset.column;
