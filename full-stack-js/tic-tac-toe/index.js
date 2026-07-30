@@ -173,15 +173,14 @@ function  startGame(e) {
 
 function draw() {
 
-    let x = game.getBoard.some((row) =>
+    return (game.getBoard.some((row) =>
         row.some((column) =>  column.getValue() === "")
-    );  
-    console.log(x);
+    ));  
+
 }
 
 function handleClickCell(e) {
     
-draw();
     if (!e.target.classList.contains("cell")) return;
     
     const selectedColumn = e.target.dataset.column;
@@ -196,6 +195,15 @@ draw();
             winnerContainer.classList.add("show");
             winnerMessage.classList.add("show-message");
             winnerMessage.innerText = `${game.getActivePlayer().name} wins!`;
+            game.canPlay = false;
+            playerTurn.hidden = true;
+        }
+        if (!draw()) {
+            restartButton.hidden = false;
+            restartContainer.appendChild(restartButton);
+            winnerContainer.classList.add("show");
+            winnerMessage.classList.add("show-message");
+            winnerMessage.innerText = `It's a draw!`;
             game.canPlay = false;
             playerTurn.hidden = true;
         }
