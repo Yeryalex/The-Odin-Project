@@ -46,24 +46,20 @@ const sample = [
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-
-    if (!new.target) {
-        throw Error("Object from Book is being created without the new keyword.");
+class Book {
+    constructor(title, author, pages, read) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
 
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+    toggleRead() {
+        this.read = !this.read;
+        return (this.read);
+    }
 }
-
-Book.prototype.toggleRead = function () {
-    
-    this.read = !this.read;
-    return (this.read);
-};
 
 sample.forEach((element) => {
     myLibrary.push(new Book(element.title, element.author, element.pages, element.read));
