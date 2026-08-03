@@ -1,4 +1,4 @@
-import imageCafe from "./images/alex-haney-CAhjZmVk5H4-unsplash.jpg"
+import imageCafe from "./images/alex-haney-CAhjZmVk5H4-unsplash.png"
 
 export function aboutPage() {
 

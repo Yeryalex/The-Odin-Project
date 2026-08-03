@@ -1,4 +1,4 @@
-import imageCafe from "./images/victoria-shes-UC0HZdUitWY-unsplash.jpg"
+import imageCafe from "./images/victoria-shes-UC0HZdUitWY-unsplash.png"
 
 export function menuPage() {
     const divContainer = document.querySelector("#container");

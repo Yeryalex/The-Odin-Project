@@ -38,6 +38,10 @@
     text-wrap: balance;
 }
 
+body {
+  background-color: rgb(116, 165, 175);
+}
+
 nav {
     display: grid;
     grid-template-columns: repeat(3, 80px);
