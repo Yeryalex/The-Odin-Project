@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  background-color: rgb(99, 200, 190);
+    box-sizing: border-box;
+}
+
+main {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+p  * {
+    display: block;
+    width: 100%;
+}
+
+input[type="email"] {
+  appearance: none;
+
+  width: 100%;
+  border: 1px solid #333333;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: 90%;
+
+  box-sizing: border-box;
+}
+
+input:invalid {
+  border-color: #990000;
+  background-color: #ffdddd;
+}
+
+.active-bg {
+      background-color: #ffdddd;
+
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+.error-mail {
+ width: 100%;
+ padding: 0;
+
+  font-size: 80%;
+  color: white;
+  background-color: #990000;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+}
+
+.error-mail.active {
+  padding: 0.3em;
+}
